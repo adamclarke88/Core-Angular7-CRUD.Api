@@ -37,6 +37,8 @@ namespace WebAPI
 
             services.AddDbContext<PaymentDetailContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddCors();  // adding cors to allow the angular front end to connect to the web api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,11 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseMvc();
         }

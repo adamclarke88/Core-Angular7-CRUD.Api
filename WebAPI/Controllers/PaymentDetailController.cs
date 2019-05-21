@@ -28,18 +28,18 @@ namespace WebAPI.Controllers
         }
 
         // GET: api/PaymentDetail/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<PaymentDetail>> GetPaymentDetail(int id) // returns the corresponding payment detail with the given ID. I.e. 5
-        //{
-        //    var paymentDetail = await _context.PaymentDetails.FindAsync(id);
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PaymentDetail>> GetPaymentDetail(int id) // returns the corresponding payment detail with the given ID. I.e. 5
+        {
+            var paymentDetail = await _context.PaymentDetails.FindAsync(id);
 
-        //    if (paymentDetail == null)
-        //    {
-        //        return NotFound();
-        //    }
+            if (paymentDetail == null)
+            {
+                return NotFound();
+            }
 
-        //    return paymentDetail;
-        //}
+            return paymentDetail;
+        }
 
         // PUT: api/PaymentDetail/5
         [HttpPut("{id}")]
